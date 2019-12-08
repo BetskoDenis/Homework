@@ -1,0 +1,302 @@
+*, :before, :after{
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: "AvenirBlack";
+    src: url("../fonts/Avenir-Black/Avenir-Black.woff2") format("woff2"),
+    url("../fonts/Avenir-Black/Avenir-Black.woff") format("woff"),
+    url("../fonts/Avenir-Black/Avenir-Black.ttf") format("truetype");
+}
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "AvenirBlack", sans-serif;
+    font-size: 14px;
+}
+.container{
+    max-width: 1270px;
+    padding: 0 15px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+header {
+    order: 1;
+    min-height: 89px;
+    background-color: rgba(255, 198, 0, 1);
+}
+.header__wrapper{
+    display: flex;
+
+}
+.header_left__wrapper{
+    display: flex;
+
+}
+.header_left{
+    margin-right: 7px;
+}
+.logo_block{
+    margin-right: calc(15px + 4.9vw)/*109px*/;
+    width: 51px;
+    height: 80px;
+}
+.logo_block img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.categories_menu{
+    padding-top: 20px;
+}
+.categories_menu a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+#open{
+    display: none;
+
+}
+.dropdown{
+    display: flex;
+    width: 148px;
+    height: 41px;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    align-items: center;
+    padding: 0 9px;
+    cursor: pointer;
+    justify-content: space-between;
+    border-radius: 3px;
+    position: relative;
+}
+.dropdown:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.dropdown:after{
+    content: '';
+    width: 8px;
+    height: 8px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+    transition: all .2s;
+}
+.dropdown:hover, .dropdown_menu li:hover{
+    background-color: rgba(0, 0, 0, .9);
+}
+.dropdown_menu{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+}
+.dropdown_menu li{
+    display: flex;
+    align-items: center;
+    width: 148px;
+    height: 41px;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    padding: 0 9px;
+}
+#open:checked~.dropdown:before{
+    display: none;
+}
+#open:checked~.dropdown:after{
+    transform: rotate(-135deg);
+}
+#open:checked~.dropdown_menu{
+    display: flex;
+}
+#open:checked~.dropdown{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+#open:checked~.dropdown_menu li:last-child{
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.search_block{
+    height: 40px;
+    flex: 1 1 50%;
+    min-width: 350px;
+    outline: none;
+    position: relative;
+    margin-right: 7px;
+}
+.search_block_field{
+    width: 100%;
+    height: 100%;
+    padding: 0 9px;
+    border: none;
+    border-radius: 3px;
+    font-family: "AvenirBlack", sans-serif;
+    font-size: 14px;
+
+}
+.search_block_field[type=text]::-ms-clear {
+    display: none;
+    width : 0;
+    height: 0;
+}
+.search_block_field[type=text]::-ms-reveal {
+    display: none;
+    width : 0;
+    height: 0;
+}
+.search_block_field[type="search"]::-webkit-search-decoration,
+.search_block_field[type="search"]::-webkit-search-cancel-button,
+.search_block_field[type="search"]::-webkit-search-results-button,
+.search_block_field[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+.search_button{
+    position: absolute;
+    right: 9px;
+    top: calc(50% - 6px);
+    width: 13px;
+    height: 13px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url("../img/searchImg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    outline: none;
+}
+
+.header_right{
+    padding-top: 20px;
+}
+.header_right_top_block{
+    display: flex;
+}
+.header_right_bottom_block{
+    display: flex;
+}
+#btw{
+    display: none;
+}
+
+.check_btw_form{
+    width: 81px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 3px;
+    margin-right: 7px;
+}
+.check_btw{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+
+
+}
+.check_btw div{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+}
+.check_btw div:last-child:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 1);
+}
+#btw:checked~.check_btw div:last-child:after{
+    display: none;
+}
+#btw:checked~.check_btw div:first-child:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.login_block{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    border: none;
+    background-color: rgba(255, 255, 255, 1);
+    width: 91px;
+    height: 40px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 7px;
+}
+.login_block_img{
+    width: 11px;
+    height: 13px;
+}
+.login_block_img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.login_block span{
+    font-size: 14px;
+    font-family: "AvenirBlack", sans-serif;
+}
+.cart{
+    border: none;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 3px;
+    width: 84px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cart_button_img{
+    width: 23px;
+    height: 19px;
+    margin-right: 8px;
+}
+.cart_button_img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.cart_info_block{
+    color: rgba(255, 255, 255, 1);
+}
+.arrow_cart{
+    border: 1px solid rgba(255, 255, 255, 1);
+    height: 7px;
+    width: 7px;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg);
+}
+main {
+    order: 2;
+}
+footer{
+    order: 3;
+}
