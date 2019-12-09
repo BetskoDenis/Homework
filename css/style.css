@@ -14,20 +14,21 @@ body {
     font-size: 14px;
 }
 .container{
-    max-width: 1270px;
+    max-width: 1141px;
     padding: 0 15px;
     margin: 0 auto;
     width: 100%;
     height: 100%;
 }
 header {
+    display: flex;
+    align-items: center;
     order: 1;
     min-height: 89px;
     background-color: rgba(255, 198, 0, 1);
 }
 .header__wrapper{
     display: flex;
-
 }
 .header_left__wrapper{
     display: flex;
@@ -47,7 +48,7 @@ header {
     object-fit: cover;
 }
 .categories_menu{
-    padding-top: 20px;
+    padding-top: 17px;
 }
 .categories_menu a {
     text-decoration: none;
@@ -118,17 +119,27 @@ header {
 #open:checked~.dropdown{
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-
 }
 #open:checked~.dropdown_menu li:last-child{
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
 }
+
+.header_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 17px;
+    width: 100%;
+}
+.header_right_top_block{
+    display: flex;
+}
+
 .search_block{
     height: 40px;
     flex: 1 1 50%;
-    min-width: 350px;
-    outline: none;
+    min-width: 180px;
     position: relative;
     margin-right: 7px;
 }
@@ -140,7 +151,7 @@ header {
     border-radius: 3px;
     font-family: "AvenirBlack", sans-serif;
     font-size: 14px;
-
+    outline: none;
 }
 .search_block_field[type=text]::-ms-clear {
     display: none;
@@ -174,15 +185,6 @@ header {
     outline: none;
 }
 
-.header_right{
-    padding-top: 20px;
-}
-.header_right_top_block{
-    display: flex;
-}
-.header_right_bottom_block{
-    display: flex;
-}
 #btw{
     display: none;
 }
@@ -272,6 +274,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 .cart_button_img{
     width: 23px;
@@ -293,6 +296,33 @@ header {
     border-top: none;
     border-left: none;
     transform: rotate(45deg);
+}
+
+.header_right_bottom_block{
+    display: flex;
+    padding-top: 2px;
+}
+
+.header_right_bottom_block a{
+    text-decoration: none;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_right_bottom_block a:not(:last-child){
+    margin-right: 25px;
+}
+.header_right_bottom_block a span{
+    text-align: center;
+}
+.header_right_bottom_block img{
+    height: 12px;
+    width: 14px;
+    object-fit: contain;
+    margin-right: 10px;
 }
 main {
     order: 2;

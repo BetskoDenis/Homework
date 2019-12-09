@@ -13,26 +13,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4075426">
+    <splitter split-orientation="horizontal" split-proportion="0.48349634">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="194" column="50" selection-start-line="194" selection-start-column="40" selection-end-line="194" selection-end-column="50" />
+                <state relative-caret-position="329">
+                  <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
                   <folding>
                     <element signature="n#main#0;n#body#0;n#html#0;n#!!top" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../Viseven/viseven-it-academy-2019-task1-master/viseven-it-academy-2019-task1-master/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="408">
-                  <caret line="30" column="75" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="30" selection-end-column="75" />
                 </state>
               </provider>
             </entry>
@@ -44,17 +35,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="196">
-                  <caret line="278" column="21" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/../../Viseven/viseven-it-academy-2019-task1-master/viseven-it-academy-2019-task1-master/css/style.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="341" column="9" selection-start-line="341" selection-start-column="5" selection-end-line="341" selection-end-column="9" />
+                <state relative-caret-position="110">
+                  <caret line="134" column="24" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
@@ -68,6 +50,7 @@
       <find>open</find>
       <find>:v</find>
       <find>:che</find>
+      <find>header_right_bottom_block</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -164,16 +147,18 @@
       <workItem from="1575401637503" duration="1116000" />
       <workItem from="1575799400634" duration="239000" />
       <workItem from="1575801943066" duration="17604000" />
+      <workItem from="1575878593939" duration="11885000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30615000" />
+    <option name="totallyTimeSpent" value="42500000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12686567" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12793177" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -198,24 +183,12 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../Viseven/viseven-it-academy-2019-task1-master/viseven-it-academy-2019-task1-master/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="30" column="75" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="30" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../Viseven/viseven-it-academy-2019-task1-master/viseven-it-academy-2019-task1-master/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="341" column="9" selection-start-line="341" selection-start-column="5" selection-end-line="341" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Viseven/viseven-it-academy-2019-task1-master/viseven-it-academy-2019-task1-master/index.html" />
+    <entry file="file://$PROJECT_DIR$/../../Viseven/viseven-it-academy-2019-task1-master/viseven-it-academy-2019-task1-master/css/style.css" />
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="194" column="50" selection-start-line="194" selection-start-column="40" selection-end-line="194" selection-end-column="50" />
+        <state relative-caret-position="329">
+          <caret line="198" lean-forward="true" selection-start-line="198" selection-end-line="198" />
           <folding>
             <element signature="n#main#0;n#body#0;n#html#0;n#!!top" />
           </folding>
@@ -224,8 +197,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="278" column="21" selection-start-line="278" selection-start-column="21" selection-end-line="278" selection-end-column="21" />
+        <state relative-caret-position="110">
+          <caret line="134" column="24" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
         </state>
       </provider>
     </entry>
