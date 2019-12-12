@@ -10,6 +10,7 @@
 h3{
     font-size: calc(15px + .88vw);
     max-width: 305px;
+    margin-bottom: 13px;
 }
 body {
     display: flex;
@@ -485,40 +486,47 @@ main {
 .block_stocks_first_line{
     display: flex;
     flex-wrap: wrap;
-
 }
 .stocks_item{
     display: flex;
-    padding: 35px;
+    padding: calc(10px + 1.3vw);
     background-color: rgba(170, 170, 170, .1);
     border-radius: 3px;
-    height: 100%;
     margin-bottom: 7px;
     margin-right: 7px;
 }
 .work_time{
     flex-direction: column;
-    min-width: 290px;
+    min-width: 230px;
     padding: 20px;
+    flex: 1 1 calc(33% - 7px);
 }
 .block_stocks_first_line .stocks_item{
-    min-height: 230px;
+    max-height: 230px;
+    min-height: 180px;
 }
 .block_stocks_first_line .stocks_item:first-child{
-    margin-right: 7px;
-    flex: 1 1 290px;
-
+    flex: 1 1 calc(67% - 7px);
+    min-width: 250px;
 }
 .block_stocks_first_line .stocks_item:last-child{
-    flex: 0 1 290px;
+
 }
 
 .block_stocks button{
-
+    height: 41px;
+    width: 78px;
+    border: none;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 1);
+    cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-family: "AvenirBlack", sans-serif;
 }
 .stocks_item_image{
-    height: 145px;
-    width: 136px;
+    max-height: 145px;
+    max-width: 136px;
 }
 .stocks_item_image img{
     height: 100%;

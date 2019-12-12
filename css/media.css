@@ -1,7 +1,5 @@
 @media (min-width: 320px) and (max-width: 768px) {
-  /*.header_left__wrapper{*/
-    /*padding-top: 47px;*/
-  /*}*/
+
     .check_btw_form{
         display: none;
     }
@@ -12,7 +10,6 @@
         display: none;
     }
  .header_right_top_block{
-
    justify-content: center;
  }
   .check_btw_form{
@@ -24,7 +21,6 @@
   .cart{
     margin-bottom: 7px;
   }
-
 .header_right_bottom_block{
   flex-wrap: wrap;
   justify-content: center;
@@ -35,7 +31,7 @@
 
 }
 
-@media (min-width: 320px) and (max-width: 600px){
+@media (min-width: 320px) and (max-width: 576px){
     .search_block{
         margin-bottom: 5px;
     }
