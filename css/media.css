@@ -57,6 +57,14 @@
     .menu_aside_mobile_btn {
         display: block;
     }
+
+    .footer_bottom__wrapper{
+        align-items: center;
+        flex-direction: column;
+    }
+    .sitemap{
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 576px) {
