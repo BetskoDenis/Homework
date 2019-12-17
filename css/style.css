@@ -45,6 +45,27 @@ body {
     font-size: 14px;
 }
 
+@keyframes buttonani {
+    from{
+        transform: translateX(0px);
+    }
+    25%{
+        transform: translateX(-5px);
+    }
+    to{
+        transform: translateX(5px);
+    }
+}
+
+.button{
+    transition: all .3s;
+}
+
+.button:hover {
+   transform: translateY(-3px);
+    box-shadow: 5px 4px 5px 0px rgba(0,0,0,0.5);
+}
+
 .container {
     max-width: 1141px;
     padding: 0 15px;
@@ -598,6 +619,11 @@ aside nav {
 
 .menu_aside li {
     margin-right: 7px;
+    border: 1px solid transparent;
+       width: 100%;
+}
+.menu_aside li:hover {
+    animation: buttonani 0.3s steps(22) forwards;
 }
 
 .block_stocks {
@@ -740,9 +766,19 @@ aside nav {
 .carousel_right_arrow{
     position: absolute;
 }
-.carousel__wrapper{
-    display: flex;
+.carousel_block{
     overflow: hidden;
+    position: relative;
+    min-height: 278px;
+}
+.carousel__wrapper{
+    display: inline-flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transition: all .3s;
+
 }
 
 .carousel_item:not(:last-child){
@@ -753,14 +789,14 @@ aside nav {
     display: flex;
     flex-direction: column;
     padding: 40px 25px 20px 25px;
-    min-width: 222.5px;
+    min-width: 222px;
     align-items: center;
     cursor: pointer;
     transition: all .3s;
 }
-
 .carousel_item:hover{
-    transform: scale(1.05);
+    transform: scale(1.02);
+    box-shadow: 0px px 5px 0px rgba(0,0,0,0.5);
 }
 
 .carousel_item_image{
@@ -788,17 +824,20 @@ aside nav {
     background-color: rgba(255, 198, 0, 1);
     cursor: pointer;
     outline: none;
+    z-index: 5;
 }
+
+
 .carousel_left_arrow{
     position: absolute;
     top: calc(50% - 17px);
-    right: -15px;
+    left: -15px;
 
 }
 .carousel_right_arrow{
     position: absolute;
     top: calc(50% - 17px);
-    left: -15px;
+    right: -15px;
 
 }
 .carousel_left_arrow:after{
@@ -810,7 +849,7 @@ aside nav {
     width: 15px;
     border-right: 5px solid rgba(255, 255, 255, 1);
     border-bottom: 5px solid rgba(255, 255, 255, 1);
-    transform: rotate(-45deg);
+    transform: rotate(135deg);
 }
 .carousel_right_arrow:after{
     content: "";
@@ -821,7 +860,11 @@ aside nav {
     width: 15px;
     border-right: 5px solid rgba(255, 255, 255, 1);
     border-bottom: 5px solid rgba(255, 255, 255, 1);
-    transform: rotate(135deg);
+    transform: rotate(-45deg);
+}
+
+.carousel_left_arrow:active, .carousel_right_arrow:active{
+    transform: scale(.9);
 }
 
 .section_three{
@@ -925,7 +968,10 @@ footer a{
     border-radius: 3px;
     cursor: pointer;
     outline: none;
+    position: relative;
 }
+
+
 
 .line_first_footer_logo{
     margin-bottom: 20px;
