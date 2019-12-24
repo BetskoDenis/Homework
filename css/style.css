@@ -32,6 +32,9 @@ h6 {
     font-size: 14px;
     margin-bottom: 20px;
     line-height: 1.45;
+    text-overflow: ellipsis;
+    height: 40px;
+    overflow: hidden;
 }
 
 a {
@@ -568,9 +571,9 @@ main {
 aside {
     background-color: rgba(255, 255, 255, 1);
     padding: 15px;
-    max-width: 320px;
     z-index: 2;
     transition: all .3s;
+    flex: 1 1 25%;
 }
 
 .menu_aside_mobile_btn {
@@ -630,8 +633,8 @@ aside nav {
 
 .block_stocks {
     display: flex;
-    flex-direction: column;
-    width: 813px;
+    flex-wrap: wrap;
+    flex: 1 1 70%;
 }
 
 .block_stocks_first_line {
@@ -639,17 +642,20 @@ aside nav {
     flex-wrap: wrap;
 }
 
+.item_top {
+    flex: 1 1 50%;
+    padding: 3px;
+    min-width: 350px;
+}
+
 .stocks_item {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: calc(10px + 1.3vw);
-    background-color: rgba(170, 170, 170, .1);
+    background-color: rgba(170, 170, 170, .1);;
+    padding: 65px 50px;
+    height: 100%;
+    width: 100%;
     border-radius: 3px;
-    margin-bottom: 7px;
-    margin-right: 7px;
-    max-height: 230px;
-    min-height: 200px;
 
 }
 
@@ -657,19 +663,26 @@ aside nav {
     margin-bottom: 30px;
 }
 
-.work_time {
+.item_top.first .stocks_item {
+    padding: 35px 30px;
+}
+
+.item_top.second .stocks_item {
+    padding: 20px 20px 40px 20px;
+}
+
+.second {
     display: flex;
     justify-content: center;
-    min-width: 180px;
-    padding: 20px 20px 40px 15px;
-    flex: 1 1 calc(33% - 7px);
+    min-width: 220px;
+    flex: 1 1 20%;
 
 }
 
 .work_time__wrapper {
     display: flex;
     justify-content: space-between;
-    font-size: calc(9px + .3vw);
+    font-size: calc(12px + .1vw);
     line-height: 1.3;
     flex-direction: column;
     max-width: 300px;
@@ -698,16 +711,6 @@ aside nav {
     flex-direction: column;
 }
 
-.block_stocks_first_line .stocks_item:first-child {
-    flex: 1 1 calc(67% - 7px);
-    min-width: 200px;
-    align-items: center;
-}
-
-.block_stocks_first_line .stocks_item:last-child {
-
-}
-
 .block_stocks button {
     height: 41px;
     width: 78px;
@@ -731,15 +734,6 @@ aside nav {
     object-fit: contain;
 }
 
-.block_stocks_second_line {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.block_stocks_second_line .stocks_item {
-    flex: 1 1 calc(50% - 7px);
-    min-width: 220px;
-}
 
 .section_two {
     margin-bottom: 40px;
@@ -774,31 +768,36 @@ aside nav {
 .carousel_block {
     overflow: hidden;
     position: relative;
+
     min-height: 278px;
 }
 
 .carousel__wrapper {
-    display: inline-flex;
-    position: absolute;
+    display: flex;
+    position: relative;
     left: 0;
-    top: 0;
-    bottom: 0;
-    transition: all .3s;
+    transition: left .3s, right .3s;
 
 }
 
-.carousel_item:not(:last-child) {
+.carousel_item_top:not(:last-child) {
     border-right: 1px solid rgba(170, 170, 170, .2);
+}
+
+.carousel_item_top {
+    flex: 0 0 20%;
 }
 
 .carousel_item {
     display: flex;
     flex-direction: column;
     padding: 40px 25px 20px 25px;
-    min-width: 222px;
+    justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    transition: all .3s;
+    transition: transform .3s, box-shadow .3s;
+
+
 }
 
 .carousel_item:hover {
@@ -819,7 +818,7 @@ aside nav {
 }
 
 .carousel_item span {
-    font-size: 40px;
+    font-size: calc(30px + .52vw);
     font-family: "AvenirBlack", sans-serif;
 }
 

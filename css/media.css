@@ -1,3 +1,9 @@
+@media (max-width: 950px) {
+    .carousel_item_top {
+        flex: 0 0 25%;
+    }
+}
+
 @media (max-width: 768px) {
 
     .check_btw_form {
@@ -54,15 +60,24 @@
         border-right: none;
     }
 
+    .stocks_item {
+        padding: 25px 20px;
+    }
+
     .menu_aside_mobile_btn {
         display: block;
     }
 
-    .footer_bottom__wrapper{
+    .carousel_item_top {
+        flex: 0 0 33.33%;
+    }
+
+    .footer_bottom__wrapper {
         align-items: center;
         flex-direction: column;
     }
-    .sitemap{
+
+    .sitemap {
         margin-bottom: 10px;
     }
 }
@@ -82,5 +97,19 @@
 
     .header_right_top_block {
         flex-wrap: wrap;
+    }
+
+    .item_top {
+        min-width: 290px;
+    }
+
+    .carousel_item_top {
+        flex: 0 0 50%;
+    }
+}
+
+@media (max-width: 400px) {
+    .carousel_item_top {
+        flex: 0 0 100%;
     }
 }
