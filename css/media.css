@@ -6,8 +6,9 @@
 
 @media (max-width: 768px) {
 
-    .check_btw_form {
+    .check_form {
         display: none;
+        margin-bottom: 7px;
     }
 
     .login_block {
@@ -20,10 +21,7 @@
 
     .header_right_top_block {
         justify-content: center;
-    }
-
-    .check_btw_form {
-        margin-bottom: 7px;
+        flex-wrap: wrap;
     }
 
     .login_block {
@@ -54,10 +52,11 @@
         transform: translateX(-120%);
         transition: all .3s;
         max-height: 500px;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
         border: 2px solid rgba(0, 0, 0, 1);
         border-right: none;
+        box-shadow: 5px 4px 5px 0px rgba(0, 0, 0, 0.5);
     }
 
     .stocks_item {
@@ -97,6 +96,7 @@
 
     .header_right_top_block {
         flex-wrap: wrap;
+
     }
 
     .item_top {

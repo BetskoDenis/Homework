@@ -100,12 +100,14 @@ header {
 
 .logo_block {
     margin-right: calc(15px + 4.9vw) /*109px*/;
-    width: 51px;
-    height: 80px;
+    min-width: 51px;
+    min-height: 80px;
 }
 
 .logo_block img {
-    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
 .header_right_top_block_item:not(:last-child) {
@@ -123,6 +125,7 @@ header {
 .header_right_top_block {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 .categories_menu {
@@ -139,7 +142,7 @@ header {
 
 .dropdown {
     display: flex;
-    width: 148px;
+    min-width: 148px;
     height: 40px;
     background-color: rgba(0, 0, 0, 1);
     color: rgba(255, 255, 255, 1);
@@ -149,6 +152,7 @@ header {
     justify-content: space-between;
     border-radius: 3px;
     position: relative;
+    margin-right: 10px;
 }
 
 .dropdown:before {
@@ -219,6 +223,7 @@ header {
     min-width: 160px;
     max-width: 507px;
     position: relative;
+    margin-bottom: 5px;
 
 }
 
@@ -271,7 +276,7 @@ header {
     display: none;
 }
 
-.check_btw_form {
+.check_form {
     width: 81px;
     height: 40px;
     background-color: rgba(255, 255, 255, 1);
@@ -279,7 +284,7 @@ header {
 
 }
 
-.check_btw {
+.check {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -288,7 +293,7 @@ header {
     cursor: pointer;
 }
 
-.check_btw span {
+.check span {
     display: flex;
     align-items: center;
     text-align: center;
@@ -299,7 +304,7 @@ header {
     border-radius: 3px;
 }
 
-.check_btw span:last-child:after {
+.check span:last-child:after {
     content: "";
     position: absolute;
     top: 0;
@@ -310,11 +315,11 @@ header {
     border-radius: 3px;
 }
 
-#btw:checked ~ .check_btw span:last-child:after {
+#btw:checked ~ .check span:last-child:after {
     display: none;
 }
 
-#btw:checked ~ .check_btw span:first-child:after {
+#btw:checked ~ .check span:first-child:after {
     content: "";
     position: absolute;
     top: 0;
@@ -332,7 +337,6 @@ header {
     padding: 0 8px;
     border: none;
     background-color: rgba(255, 255, 255, 1);
-    width: 91px;
     height: 40px;
     border-radius: 3px;
     outline: none;
@@ -380,7 +384,7 @@ header {
     content: "";
     position: absolute;
     top: calc(50% + 3px);
-    right: 24px;
+    right: 26%;
     border: 1px solid rgba(255, 255, 255, 1);
     height: 7px;
     width: 7px;
@@ -457,16 +461,17 @@ header {
 .mobile_menu {
     border-top: 2px solid rgba(0, 0, 0, 1);
     border-bottom: 2px solid rgba(0, 0, 0, 1);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    width: 0px;
-    height: 350px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 200px;
+    min-height: 350px;
     background-color: rgba(255, 198, 0, 1);
     position: absolute;
-    top: 100px;
+    top: 104px;
     right: 0;
-    transition: all .3s;
-
+    transform: translateY(-150%);
+    transition: transform .3s;
+    box-shadow: -5px 4px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 .mobile_menu nav {
@@ -490,34 +495,43 @@ header {
 .mobile_menu ul li {
     display: flex;
     align-items: center;
+    cursor: pointer;
+    transition: transform .25s;
 }
+.mobile_menu ul li:hover {
+    transform: scale(1.1);
+}
+
 
 .mobile_menu ul li:first-child {
     display: none;
+}
+.mobile_menu ul li:not(:last-child) {
+    margin-bottom: 50px;
 }
 
 #mobile_btw_input {
     display: none;
 }
 
-.mobile_btw {
+.mobile_check {
     cursor: pointer;
 }
 
-.mobile_btw span:last-child {
+.mobile_check span:last-child {
     text-decoration: line-through;
 }
 
-#mobile_btw_input:checked ~ .mobile_btw span:first-child {
+#mobile_btw_input:checked ~ .mobile_check span:first-child {
     text-decoration: line-through;
 }
 
-#mobile_btw_input:checked ~ .mobile_btw span:last-child {
+#mobile_btw_input:checked ~ .mobile_check span:last-child {
     text-decoration: none;
 }
 
 #burger_btn:checked ~ .mobile_menu {
-    width: 200px;
+    transform: translateY(0);
 }
 
 #burger_btn:checked ~ .mobile_menu ul {
@@ -527,6 +541,7 @@ header {
 .header_right_bottom_block {
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .header_right_bottom_block a {
@@ -545,14 +560,14 @@ header {
 }
 
 .header_right_bottom_block img {
-    height: 12px;
-    width: 14px;
+    min-height: 12px;
+    min-width: 14px;
     object-fit: contain;
     margin-right: 10px;
 }
 
 .item_right_bottom_block {
-
+    margin-bottom: 5px;
 }
 
 
@@ -579,7 +594,7 @@ aside {
 .menu_aside_mobile_btn {
     position: fixed;
     left: -30px;
-    top: 125px;
+    top: 130px;
     height: 40px;
     width: 100px;
     transform: rotate(90deg);
@@ -712,8 +727,8 @@ aside nav {
 }
 
 .block_stocks button {
-    height: 41px;
-    width: 78px;
+    min-height: 41px;
+    min-width: 78px;
     border: none;
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 1);
@@ -972,7 +987,7 @@ footer a {
 .footer_top_item button {
     font-family: "AvenirBlack", sans-serif;
     width: 100%;
-    height: 40px;
+    min-height: 40px;
     text-align: center;
     border: none;
     background-color: rgba(0, 0, 0, 1);
@@ -1046,7 +1061,6 @@ footer a {
 
 .sitemap li {
     padding: 0 5px;
-    height: max-content;
     font-size: calc(12px + .2vw);
 }
 
