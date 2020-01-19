@@ -62,7 +62,7 @@ body {
 }
 
 .button {
-    transition: all .3s;
+    transition: all .25s;
 }
 
 .button:hover {
@@ -433,7 +433,7 @@ header {
     height: 3px;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
-    transition: all .3s;
+    transition: all .25s;
 }
 
 .burger_menu_btn span:before {
@@ -444,7 +444,7 @@ header {
     height: 3px;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
-    transition: all .3s;
+    transition: all .25s;
 }
 
 .burger_menu_btn span:after {
@@ -455,7 +455,7 @@ header {
     height: 3px;
     width: 100%;
     background-color: rgba(0, 0, 0, 1);
-    transition: all .3s;
+    transition: all .25s;
 }
 
 .mobile_menu {
@@ -470,7 +470,7 @@ header {
     top: 104px;
     right: 0;
     transform: translateY(-150%);
-    transition: transform .3s;
+    transition: transform .25s;
     box-shadow: -5px 4px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -587,7 +587,7 @@ aside {
     background-color: rgba(255, 255, 255, 1);
     padding: 15px;
     z-index: 2;
-    transition: all .3s;
+    transition: all .25s;
     flex: 1 1 25%;
 }
 
@@ -643,7 +643,7 @@ aside nav {
 }
 
 .menu_aside li:hover {
-    animation: buttonani 0.3s steps(22) forwards;
+    animation: buttonani 0.25s steps(22) forwards;
 }
 
 .block_stocks {
@@ -791,7 +791,7 @@ aside nav {
     display: flex;
     position: relative;
     left: 0;
-    transition: left .3s, right .3s;
+    transition: left .25s, right .25s;
 
 }
 
@@ -810,7 +810,7 @@ aside nav {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    transition: transform .3s, box-shadow .3s;
+    transition: transform .25s, box-shadow .25s;
 
 
 }
