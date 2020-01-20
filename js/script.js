@@ -79,15 +79,27 @@ Main = {
             coordinatesUp = event.x;
             coordinatesResult = coordinatesDown - coordinatesUp
             mouseDown = false;
-            console.log(coordinatesResult)
-            return coordinatesResult;
+           // console.log(coordinatesResult)
+
         });
 
         carouselWrapper.addEventListener("mousemove", function (e) {
             if (mouseDown) {
                 percent()
+                let resultTemp = coordinatesDown - e.x;
+                leftPercent = leftPercent + (resultTemp / 10);
 
-                console.log(e.x)
+                let carouselwidth = carouselBlock.offsetWidth;
+                if((leftPercent / (carouselwidth/100)) >= carouselwidth ){
+                    leftPercent = 0;
+                    carouselWrapper.style.left = leftPercent + '%';
+                }
+
+                //console.log((resultTemp) + '%' )
+                console.log(leftPercent / (carouselwidth/100) + '%' )
+                carouselWrapper.style.left = leftPercent / (carouselwidth/100) + '%';
+                //console.log(e.x)
+                //console.log(leftPercent)
             }
         })
     },
