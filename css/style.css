@@ -801,6 +801,7 @@ aside nav {
 
 .carousel_item_top {
     flex: 0 0 20%;
+    user-select: none;
 }
 
 .carousel_item {
@@ -811,7 +812,7 @@ aside nav {
     align-items: center;
     cursor: pointer;
     transition: transform .25s, box-shadow .25s;
-
+    user-select: none;
 
 }
 
@@ -824,12 +825,14 @@ aside nav {
     height: 81px;
     width: 117px;
     margin-bottom: 45px;
+    user-select: none;
 }
 
 .carousel_item_image img {
     height: 100%;
     width: 100%;
     object-fit: contain;
+    pointer-events: none;
 }
 
 .carousel_item span {

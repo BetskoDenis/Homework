@@ -1,5 +1,5 @@
 Main = {
-    slider : function () {
+    slider: function () {
         let left = document.getElementById('carousel_left_button');
         let right = document.getElementById('carousel_right_button');
         let carouselWrapper = document.getElementById('carousel__wrapper');
@@ -7,7 +7,6 @@ Main = {
         let carouselItem = document.getElementsByClassName('carousel_item_top');
         let percentItem;
         let leftPercent;
-
 
         function percent() {
             if (carouselBlock.offsetWidth > 920) {
@@ -22,6 +21,7 @@ Main = {
                 return percentItem = 100;
             }
         }
+
 
         function leftFunction() {
             leftPercent = 0;
@@ -64,7 +64,34 @@ Main = {
                 rightMove();
             }
         }
-            },
+
+        let coordinatesDown = 0;
+        let coordinatesUp = 0;
+        let coordinatesResult = 0;
+        let mouseDown = false;
+
+        carouselWrapper.addEventListener("mousedown", event => {
+            coordinatesDown = event.x;
+            mouseDown = true;
+            return coordinatesDown;
+        });
+        carouselWrapper.addEventListener("mouseup", event => {
+            coordinatesUp = event.x;
+            coordinatesResult = coordinatesDown - coordinatesUp
+            mouseDown = false;
+            console.log(coordinatesResult)
+            return coordinatesResult;
+        });
+
+        carouselWrapper.addEventListener("mousemove", function (e) {
+            if (mouseDown) {
+                percent()
+
+                console.log(e.x)
+            }
+        })
+    },
+
     init: function () {
         this.slider();
     },
