@@ -6,7 +6,7 @@ Main = {
         let carouselBlock = document.getElementById('carousel_block');
         let carouselItem = document.getElementsByClassName('carousel_item_top');
         let percentItem;
-        let leftPercent;
+        let leftPercent = 0;
 
         function percent() {
             if (carouselBlock.offsetWidth > 920) {
@@ -24,7 +24,7 @@ Main = {
 
 
         function leftFunction() {
-            leftPercent = 0;
+            // leftPercent = 0;
             return function () {
                 leftPercent = leftPercent - percentItem;
                 carouselWrapper.style.left = leftPercent + "%";
@@ -84,30 +84,32 @@ Main = {
             moveLeft = leftPercent;
             return coordinatesDown;
         });
-        carouselBlock.addEventListener("mouseup", event => {
-            percent();
-            let percentAllItem = percentItem * carouselItem.length;
-            coordinatesUp = event.x;
-            coordinatesResult = coordinatesDown - coordinatesUp
-            mouseDown = false;
-            leftPercent = leftPercent + moveLeft
-            console.log(leftPercent)
+        window.addEventListener("mouseup", event => {
+            if(mouseDown){
+                percent();
+                let percentAllItem = percentItem * carouselItem.length;
+                coordinatesUp = event.x;
+                coordinatesResult = coordinatesDown - coordinatesUp
+                mouseDown = false;
+                leftPercent = leftPercent + moveLeft
+                console.log(leftPercent)
 
-            if (Math.round(percentAllItem - 100) < Math.round(leftPercent)){
-                leftPercent = percentAllItem - 100;
-                carouselWrapper.style.left = leftPercent * -1 + '%';
-            } else if(Math.round(leftPercent) < 0){
-                leftPercent = 0;
-                carouselWrapper.style.left = leftPercent * -1 + '%';
+                if (Math.round(percentAllItem - 100) < Math.round(leftPercent)){
+                    leftPercent = percentAllItem - 100;
+                    carouselWrapper.style.left = leftPercent * -1 + '%';
+                } else if(Math.round(leftPercent) < 0){
+                    leftPercent = 0;
+                    carouselWrapper.style.left = leftPercent * -1 + '%';
+                }
+                else
+                    carouselWrapper.style.left = leftPercent * -1 + '%';
             }
-            else
-            carouselWrapper.style.left = leftPercent * -1 + '%';
         });
-
-        carouselBlock.addEventListener("mousemove", function (e) {
+        window.addEventListener("mousemove", function (e) {
             if (mouseDown) {
                 percent();
                 let resultTemp = coordinatesDown - e.x;
+
                     if(resultTemp <0 && resultTemp >= -200){
                         moveLeft =  percentItem * -1;
                     }else if(resultTemp < -200 && resultTemp >= -400){
@@ -121,9 +123,10 @@ Main = {
                     } else if (resultTemp > 400 ) {
                         moveLeft = 3 * percentItem;
                     }
-                console.log(moveLeft)
+                    console.log(moveLeft)
                     carouselWrapper.style.left = (leftPercent + moveLeft) * -1 + '%';
-            }
+
+                }
         })
     },
 
