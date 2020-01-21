@@ -49,57 +49,80 @@ Main = {
             if (leftPercentPositive >= (percentAllItem - 100)) {
                 leftPercent = 0;
                 carouselWrapper.style.left = leftPercent + "%";
+                console.log(leftPercent)
             } else {
+                console.log(leftPercent)
                 leftMove();
             }
         }
 
         right.onclick = function () {
             percent();
+            if(leftPercent > 0){
+                leftPercent = leftPercent * -1;
+            }
             let percentAllItem = percentItem * carouselItem.length;
+            console.log(leftPercent)
             if (Math.round(leftPercent) == 0) {
                 leftPercent = (percentAllItem - 100) * -1;
                 carouselWrapper.style.left = leftPercent + "%";
+                console.log(leftPercent)
             } else {
+                console.log(leftPercent)
                 rightMove();
             }
         }
-
         let coordinatesDown = 0;
         let coordinatesUp = 0;
         let coordinatesResult = 0;
         let mouseDown = false;
+        let moveLeft;
 
-        carouselWrapper.addEventListener("mousedown", event => {
+        carouselBlock.addEventListener("mousedown", event => {
             coordinatesDown = event.x;
             mouseDown = true;
+            moveLeft = leftPercent;
             return coordinatesDown;
         });
-        carouselWrapper.addEventListener("mouseup", event => {
+        carouselBlock.addEventListener("mouseup", event => {
+            percent();
+            let percentAllItem = percentItem * carouselItem.length;
             coordinatesUp = event.x;
             coordinatesResult = coordinatesDown - coordinatesUp
             mouseDown = false;
-           // console.log(coordinatesResult)
+            leftPercent = leftPercent + moveLeft
+            console.log(leftPercent)
 
+            if (Math.round(percentAllItem - 100) < Math.round(leftPercent)){
+                leftPercent = percentAllItem - 100;
+                carouselWrapper.style.left = leftPercent * -1 + '%';
+            } else if(Math.round(leftPercent) < 0){
+                leftPercent = 0;
+                carouselWrapper.style.left = leftPercent * -1 + '%';
+            }
+            else
+            carouselWrapper.style.left = leftPercent * -1 + '%';
         });
 
-        carouselWrapper.addEventListener("mousemove", function (e) {
+        carouselBlock.addEventListener("mousemove", function (e) {
             if (mouseDown) {
-                percent()
+                percent();
                 let resultTemp = coordinatesDown - e.x;
-                leftPercent = leftPercent + (resultTemp / 10);
-
-                let carouselwidth = carouselBlock.offsetWidth;
-                if((leftPercent / (carouselwidth/100)) >= carouselwidth ){
-                    leftPercent = 0;
-                    carouselWrapper.style.left = leftPercent + '%';
-                }
-
-                //console.log((resultTemp) + '%' )
-                console.log(leftPercent / (carouselwidth/100) + '%' )
-                carouselWrapper.style.left = leftPercent / (carouselwidth/100) + '%';
-                //console.log(e.x)
-                //console.log(leftPercent)
+                    if(resultTemp <0 && resultTemp >= -200){
+                        moveLeft =  percentItem * -1;
+                    }else if(resultTemp < -200 && resultTemp >= -400){
+                        moveLeft = (2 * percentItem) * -1;
+                    } else if (resultTemp < -400){
+                        moveLeft = (3 * percentItem) * -1;
+                    } else if(resultTemp >= 0 && resultTemp <= 200){
+                        moveLeft =  percentItem;
+                    } else if(resultTemp > 200 && resultTemp <= 400) {
+                        moveLeft = 2 * percentItem;
+                    } else if (resultTemp > 400 ) {
+                        moveLeft = 3 * percentItem;
+                    }
+                console.log(moveLeft)
+                    carouselWrapper.style.left = (leftPercent + moveLeft) * -1 + '%';
             }
         })
     },
