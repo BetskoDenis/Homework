@@ -5,8 +5,25 @@ Main = {
         let carouselWrapper = document.getElementById('carousel__wrapper');
         let carouselBlock = document.getElementById('carousel_block');
         let carouselItem = document.getElementsByClassName('carousel_item_top');
-        let percentItem;
+        let percentItem = 0;
         let leftPercent = 0;
+        let coordinatesDown = 0;
+        let coordinatesUp = 0;
+        let coordinatesResult = 0;
+        let mouseDown = false;
+        let moveLeft = 0;
+        let touchDevice  = ('ontouchstart' in document.documentElement);
+        let aaa = 'mousedown';
+        let bbb = 'mouseup';
+        let ccc = 'mousemove';
+
+        if (touchDevice){
+            console.log("touch")
+            aaa = 'touchstart';
+            bbb = 'touchend';
+            ccc = 'touchmove';
+        }
+
 
         function percent() {
             if (carouselBlock.offsetWidth > 920) {
@@ -22,17 +39,19 @@ Main = {
             }
         }
 
-
         function leftFunction() {
-            // leftPercent = 0;
             return function () {
+                if(leftPercent > 0){
+                    leftPercent = leftPercent * -1
+                }
+
                 leftPercent = leftPercent - percentItem;
+                console.log(leftPercent)
                 carouselWrapper.style.left = leftPercent + "%";
             }
         }
 
         let leftMove = leftFunction();
-
         function rightFunction() {
             return function () {
                 leftPercent = leftPercent + percentItem;
@@ -44,7 +63,10 @@ Main = {
 
         left.onclick = function () {
             percent();
-            let leftPercentPositive = leftPercent * -1;
+            let leftPercentPositive = leftPercent;
+            if(leftPercent < 0){
+                leftPercentPositive = leftPercent * -1;
+            }
             let percentAllItem = percentItem * carouselItem.length;
             if (leftPercentPositive >= (percentAllItem - 100)) {
                 leftPercent = 0;
@@ -54,7 +76,7 @@ Main = {
                 console.log(leftPercent)
                 leftMove();
             }
-        }
+        };
 
         right.onclick = function () {
             percent();
@@ -71,29 +93,24 @@ Main = {
                 console.log(leftPercent)
                 rightMove();
             }
-        }
-        let coordinatesDown = 0;
-        let coordinatesUp = 0;
-        let coordinatesResult = 0;
-        let mouseDown = false;
-        let moveLeft;
+        };
 
-        carouselBlock.addEventListener("mousedown", event => {
+        carouselBlock.addEventListener(aaa, event => {
             coordinatesDown = event.x;
             mouseDown = true;
             moveLeft = leftPercent;
             return coordinatesDown;
         });
-        window.addEventListener("mouseup", event => {
+
+        window.addEventListener(bbb, event => {
             if(mouseDown){
                 percent();
                 let percentAllItem = percentItem * carouselItem.length;
                 coordinatesUp = event.x;
                 coordinatesResult = coordinatesDown - coordinatesUp
                 mouseDown = false;
-                leftPercent = leftPercent + moveLeft
+                leftPercent = leftPercent + moveLeft;
                 console.log(leftPercent)
-
                 if (Math.round(percentAllItem - 100) < Math.round(leftPercent)){
                     leftPercent = percentAllItem - 100;
                     carouselWrapper.style.left = leftPercent * -1 + '%';
@@ -105,12 +122,13 @@ Main = {
                     carouselWrapper.style.left = leftPercent * -1 + '%';
             }
         });
-        window.addEventListener("mousemove", function (e) {
+
+        carouselBlock.addEventListener(ccc, function (e) {
             if (mouseDown) {
                 percent();
-                let resultTemp = coordinatesDown - e.x;
-
-                    if(resultTemp <0 && resultTemp >= -200){
+                let resultTemp = coordinatesDown - e.clientX;
+                    console.log(leftPercent)
+                    if(resultTemp < 0 && resultTemp >= -200){
                         moveLeft =  percentItem * -1;
                     }else if(resultTemp < -200 && resultTemp >= -400){
                         moveLeft = (2 * percentItem) * -1;
@@ -124,6 +142,9 @@ Main = {
                         moveLeft = 3 * percentItem;
                     }
                     console.log(moveLeft)
+                if(leftPercent < 0){
+                    leftPercent = leftPercent * -1;
+                }
                     carouselWrapper.style.left = (leftPercent + moveLeft) * -1 + '%';
 
                 }
