@@ -498,6 +498,7 @@ header {
     cursor: pointer;
     transition: transform .25s;
 }
+
 .mobile_menu ul li:hover {
     transform: scale(1.1);
 }
@@ -506,6 +507,7 @@ header {
 .mobile_menu ul li:first-child {
     display: none;
 }
+
 .mobile_menu ul li:not(:last-child) {
     margin-bottom: 50px;
 }
@@ -866,7 +868,7 @@ aside nav {
 
 }
 
-.carousel_left_arrow:after {
+.carousel_left_arrow:after, .carousel_right_arrow:after {
     content: "";
     position: absolute;
     top: calc(50% - 7px);
@@ -875,18 +877,13 @@ aside nav {
     width: 15px;
     border-right: 5px solid rgba(255, 255, 255, 1);
     border-bottom: 5px solid rgba(255, 255, 255, 1);
+}
+
+.carousel_left_arrow:after {
     transform: rotate(135deg);
 }
 
 .carousel_right_arrow:after {
-    content: "";
-    position: absolute;
-    top: calc(50% - 7px);
-    left: calc(50% - 7px);
-    height: 15px;
-    width: 15px;
-    border-right: 5px solid rgba(255, 255, 255, 1);
-    border-bottom: 5px solid rgba(255, 255, 255, 1);
     transform: rotate(-45deg);
 }
 
@@ -922,18 +919,18 @@ aside nav {
 
 }
 
-.item_service:first-child {
-    background-image: url("../img/NightDelivery1.png");
+.item_service:first-child, .item_service:last-child {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.item_service:first-child {
+    background-image: url("../img/NightDelivery1.png");
+}
+
 .item_service:last-child {
     background-image: url("../img/NightDelivery2.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .item_service span {
@@ -975,29 +972,27 @@ footer a {
     margin-right: auto;
 }
 
-.footer_top_item input {
+.footer_top_item input, .footer_top_item button {
     font-family: "AvenirBlack", sans-serif;
     width: 100%;
     border: none;
-    height: 40px;
+    min-height: 40px;
+    outline: none;
+    border-radius: 3px;
+}
+
+
+.footer_top_item input {
     padding: 0 10px;
     font-size: 14px;
-    border-radius: 3px;
     margin-bottom: 7px;
-    outline: none;
 }
 
 .footer_top_item button {
-    font-family: "AvenirBlack", sans-serif;
-    width: 100%;
-    min-height: 40px;
     text-align: center;
-    border: none;
     background-color: rgba(0, 0, 0, 1);
     color: rgba(255, 255, 255, 1);
-    border-radius: 3px;
     cursor: pointer;
-    outline: none;
     position: relative;
 }
 
