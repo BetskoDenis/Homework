@@ -1,11 +1,13 @@
 main = {
-    slider: function () {
+    slider: function() {
         let left = document.getElementById('carousel_left_button');
         let right = document.getElementById('carousel_right_button');
         let carouselWrapper = document.getElementById('carousel__wrapper');
         let carouselBlock = document.getElementById('carousel_block');
         let carouselItem = document.getElementsByClassName('carousel_item_top');
-        let percentItem = 0;
+        let item = carouselBlock.querySelector('.carousel_item_top');
+        let itemWidth = item.clientWidth;
+        let carouselBlockWidth = carouselBlock.clientWidth;
         let leftPercent = 0;
         let coordinatesDown = 0;
         let coordinatesUp = 0;
@@ -18,25 +20,30 @@ main = {
         let up = 'mouseup';
         let move = 'mousemove';
 
+        let percentItem = 100 / Math.round(carouselBlockWidth/itemWidth);
+
+        window.addEventListener('resize', function () {
+            itemWidth = item.clientWidth;
+            carouselBlockWidth = carouselBlock.clientWidth;
+            percentItem = 100 / Math.round(carouselBlockWidth/itemWidth);
+            leftPercent = 0;
+            carouselWrapper.style.left = leftPercent + '%';
+
+        })
+
+
+            console.log(percentItem)
+            console.log(itemWidth)
+            console.log(carouselBlockWidth)
+            console.log(itemWidth/carouselBlockWidth*100)
+
+
         if (touchDevice) {
             down = 'touchstart';
             up = 'touchend';
             move = 'touchmove';
         }
 
-        function percent() {
-            if (carouselBlock.offsetWidth > 920) {
-                return percentItem = 20;
-            } else if (carouselBlock.offsetWidth <= 920 && carouselBlock.offsetWidth > 738) {
-                return percentItem = 25;
-            } else if (carouselBlock.offsetWidth <= 738 && carouselBlock.offsetWidth > 546) {
-                return percentItem = 33.33;
-            } else if (carouselBlock.offsetWidth <= 546 && carouselBlock.offsetWidth > 360) {
-                return percentItem = 50;
-            } else if (carouselBlock.offsetWidth < 360) {
-                return percentItem = 100;
-            }
-        }
 
         function leftFunction() {
             return function () {
@@ -61,7 +68,6 @@ main = {
         let rightMove = rightFunction();
 
         left.onclick = function () {
-            percent();
             let leftPercentPositive = leftPercent;
             if (leftPercent < 0) {
                 leftPercentPositive = leftPercent * -1;
@@ -76,7 +82,6 @@ main = {
         };
 
         right.onclick = function () {
-            percent();
             if (leftPercent > 0) {
                 leftPercent = leftPercent * -1;
             }
@@ -96,7 +101,6 @@ main = {
             } else {
                 coordinatesDown = event.x;
             }
-
             mouseDown = true;
             moveLeft = leftPercent;
             return coordinatesDown;
@@ -104,7 +108,7 @@ main = {
 
         window.addEventListener(up, event => {
             if (mouseDown) {
-                percent();
+
                 let percentAllItem = percentItem * carouselItem.length;
                 if (touchDevice) {
                 } else {
@@ -112,21 +116,21 @@ main = {
                 }
                 coordinatesResult = coordinatesDown - coordinatesUp
                 mouseDown = false;
-                leftPercent = leftPercent + moveLeft;
-                if (Math.round(percentAllItem - 100) < Math.round(leftPercent)) {
-                    leftPercent = percentAllItem - 100;
-                    carouselWrapper.style.left = leftPercent * -1 + '%';
-                } else if (Math.round(leftPercent) < 0) {
+                leftPercent = (leftPercent + moveLeft) * -1;
+                if (Math.round(percentAllItem - 100) < (Math.round(leftPercent)) * -1) {
+                    leftPercent = (percentAllItem - 100) * -1;
+                    carouselWrapper.style.left = leftPercent + '%';
+                } else if ((Math.round(leftPercent)) * -1 < 0) {
                     leftPercent = 0;
-                    carouselWrapper.style.left = leftPercent * -1 + '%';
+                    carouselWrapper.style.left = leftPercent + '%';
                 } else
-                    carouselWrapper.style.left = leftPercent * -1 + '%';
+                    carouselWrapper.style.left = leftPercent + '%';
             }
+
         });
 
         carouselBlock.addEventListener(move, function (event) {
             if (mouseDown) {
-                percent();
                 if (touchDevice) {
                     coordinatesMove = event.touches[0].clientX;
                 } else {
@@ -153,10 +157,83 @@ main = {
 
             }
         })
+
+        return () => {
+            return [leftPercent, percentItem, carouselWrapper];
+        }
+    },
+    scroll: function(){
+        let dropdownMenu = document.getElementById('dropdown_menu_header');
+        let anchors = dropdownMenu.querySelectorAll('a[href*="#"]');
+        let sliderData = this.slider();
+        let dropdownMenuItems = dropdownMenu.getElementsByTagName('a')
+        for (let anchor of anchors) {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault()
+                let leftPercentInVisible = sliderData()[0];
+                let firstVisibleItem = (Math.abs(sliderData()[0])/Math.abs(sliderData()[1])) + 1;
+                let arr = Array.from(dropdownMenuItems);
+                let indexActiveItemMenu = (arr.indexOf(this, 0))+1;
+                let indexMove = ((indexActiveItemMenu - firstVisibleItem)*Math.abs(sliderData()[1])) * -1;
+                let leftPercet = leftPercentInVisible + indexMove;
+
+                sliderData()[2].style.left = leftPercet + '%';
+                console.log(leftPercentInVisible)
+                        // if(indexMove < 0){
+                        //
+                        //     sliderData()[2].style.left = Math.abs(indexMove) * -1 + '%';
+                        // }
+                        // sliderData()[2].style.left = indexMove * -1 + '%';
+
+                //sliderData()[2].style.left = indexMove * -1 + '%';
+
+
+                console.log(firstVisibleItem + "firstVisibleItem")
+                console.log(indexMove + "indexMove")
+                console.log(indexActiveItemMenu + "indexActiveItemMenu" )
+
+                // for(let key in dropdownMenuItems.this){
+                //     console.log(key)
+                // }
+                // for (let i = 0; i<dropdownMenuItems.length; i++){
+                //     console.log(dropdownMenuItems[i])
+                // }
+
+
+
+               // console.log(dropdownMenuItems.findIndex(this))
+                let blockID = anchor.getAttribute('href').substr(1)
+                document.getElementById(blockID).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                })
+            })
+        }
+
+
+
     },
 
+    // scrollItem: function (){
+    //
+    //     let testButton = document.querySelector('button')
+    //     let sliderData = this.slider();
+    //
+    //
+    //     testButton.addEventListener('click', () => {
+    //         let firstVisibleItem = (Math.abs(sliderData()[0])/Math.abs(sliderData()[1])) + 1;
+    //         console.log(firstVisibleItem)
+    //
+    //     })
+    //
+    //
+    //
+    //
+    // },
     init: function () {
         this.slider();
+        this.scroll();
+        //this.scrollItem();
     },
 }
 
