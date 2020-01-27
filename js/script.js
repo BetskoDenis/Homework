@@ -37,7 +37,6 @@ main = {
             console.log(carouselBlockWidth)
             console.log(itemWidth/carouselBlockWidth*100)
 
-
         if (touchDevice) {
             down = 'touchstart';
             up = 'touchend';
