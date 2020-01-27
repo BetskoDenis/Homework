@@ -180,9 +180,13 @@ header {
 }
 
 .dropdown_menu {
-    display: none;
+    display: flex;
+    opacity: 0;
+    transform: scale(0.75) translateY(-150%);
     position: absolute;
     flex-direction: column;
+    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+
 }
 
 .dropdown_menu li {
@@ -193,6 +197,14 @@ header {
     background-color: rgba(0, 0, 0, 1);
     color: rgba(255, 255, 255, 1);
     padding: 0 9px;
+    cursor: pointer;
+}
+
+.dropdown_menu li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 #open:checked ~ .dropdown:before {
@@ -200,11 +212,13 @@ header {
 }
 
 #open:checked ~ .dropdown:after {
+
     transform: rotate(-135deg);
 }
 
 #open:checked ~ .dropdown_menu {
-    display: flex;
+    opacity: 1;
+    transform: scale(1) translateY(0);
 }
 
 #open:checked ~ .dropdown {
@@ -343,11 +357,15 @@ header {
     cursor: pointer;
 }
 
+.login_img{
+    margin-right: 5px;
+}
 
 .login_block_img img {
     width: 11px;
     height: 13px;
     object-fit: cover;
+
 }
 
 .login_block span {
@@ -804,6 +822,10 @@ aside nav {
 .carousel_item_top {
     flex: 0 0 20%;
     user-select: none;
+}
+
+.carousel_item_top.active{
+    border: 2px solid rgba(255, 198, 0, 1);
 }
 
 .carousel_item {

@@ -14,13 +14,38 @@ main = {
         let coordinatesResult = 0;
         let coordinatesMove = 0;
         let mouseDown = false;
+        let mouseMove = false;
         let moveLeft = 0;
         let touchDevice = ('ontouchstart' in document.documentElement);
         let down = 'mousedown';
         let up = 'mouseup';
         let move = 'mousemove';
-
         let percentItem = 100 / Math.round(carouselBlockWidth/itemWidth);
+        let dropdownMenu = document.getElementById('dropdown_menu_header');
+        let dropdownMenuItems = dropdownMenu.getElementsByTagName('a');
+
+
+        for (let dropdownMenuItem of dropdownMenuItems ){
+            dropdownMenuItem.addEventListener('click', function () {
+                let firstVisibleItem = (Math.abs(leftPercent)/Math.abs(percentItem)) + 1;
+                let dropdownMenuItemsArr = Array.from(dropdownMenuItems);
+                let indexActiveItemMenu = (dropdownMenuItemsArr.indexOf(this, 0))+1;
+                let indexMove = ((indexActiveItemMenu - firstVisibleItem)*Math.abs(percentItem)) * -1;
+                leftPercent = leftPercent + indexMove;
+                setTimeout(function () {
+                    carouselWrapper.style.left = leftPercent + '%';
+                },500)
+
+                let carouselItemArr = Array.from(carouselItem);
+                let activeItemCarousel = carouselItemArr[indexActiveItemMenu-1]
+
+                for (let i=0; i<carouselItemArr.length; i++){
+                    carouselItemArr[i].classList.remove('active')
+                }
+                activeItemCarousel.classList.add('active');
+
+            })
+        }
 
         window.addEventListener('resize', function () {
             itemWidth = item.clientWidth;
@@ -31,18 +56,11 @@ main = {
 
         })
 
-
-            console.log(percentItem)
-            console.log(itemWidth)
-            console.log(carouselBlockWidth)
-            console.log(itemWidth/carouselBlockWidth*100)
-
         if (touchDevice) {
             down = 'touchstart';
             up = 'touchend';
             move = 'touchmove';
         }
-
 
         function leftFunction() {
             return function () {
@@ -101,13 +119,13 @@ main = {
                 coordinatesDown = event.x;
             }
             mouseDown = true;
+            mouseMove = false;
             moveLeft = leftPercent;
             return coordinatesDown;
         });
 
         window.addEventListener(up, event => {
             if (mouseDown) {
-
                 let percentAllItem = percentItem * carouselItem.length;
                 if (touchDevice) {
                 } else {
@@ -115,7 +133,11 @@ main = {
                 }
                 coordinatesResult = coordinatesDown - coordinatesUp
                 mouseDown = false;
-                leftPercent = (leftPercent + moveLeft) * -1;
+
+                if(mouseMove){
+                    leftPercent = (leftPercent + moveLeft) * -1;
+                }
+
                 if (Math.round(percentAllItem - 100) < (Math.round(leftPercent)) * -1) {
                     leftPercent = (percentAllItem - 100) * -1;
                     carouselWrapper.style.left = leftPercent + '%';
@@ -130,11 +152,13 @@ main = {
 
         carouselBlock.addEventListener(move, function (event) {
             if (mouseDown) {
+
                 if (touchDevice) {
                     coordinatesMove = event.touches[0].clientX;
                 } else {
                     coordinatesMove = event.x;
                 }
+                mouseMove = true;
                 let resultTemp = coordinatesDown - coordinatesMove;
                 if (resultTemp < 0 && resultTemp >= -200) {
                     moveLeft = percentItem * -1;
@@ -153,54 +177,16 @@ main = {
                     leftPercent = leftPercent * -1;
                 }
                 carouselWrapper.style.left = (leftPercent + moveLeft) * -1 + '%';
-
             }
         })
-
-        return () => {
-            return [leftPercent, percentItem, carouselWrapper];
-        }
     },
     scroll: function(){
         let dropdownMenu = document.getElementById('dropdown_menu_header');
         let anchors = dropdownMenu.querySelectorAll('a[href*="#"]');
-        let sliderData = this.slider();
-        let dropdownMenuItems = dropdownMenu.getElementsByTagName('a')
         for (let anchor of anchors) {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault()
-                let leftPercentInVisible = sliderData()[0];
-                let firstVisibleItem = (Math.abs(sliderData()[0])/Math.abs(sliderData()[1])) + 1;
-                let arr = Array.from(dropdownMenuItems);
-                let indexActiveItemMenu = (arr.indexOf(this, 0))+1;
-                let indexMove = ((indexActiveItemMenu - firstVisibleItem)*Math.abs(sliderData()[1])) * -1;
-                let leftPercet = leftPercentInVisible + indexMove;
 
-                sliderData()[2].style.left = leftPercet + '%';
-                console.log(leftPercentInVisible)
-                        // if(indexMove < 0){
-                        //
-                        //     sliderData()[2].style.left = Math.abs(indexMove) * -1 + '%';
-                        // }
-                        // sliderData()[2].style.left = indexMove * -1 + '%';
-
-                //sliderData()[2].style.left = indexMove * -1 + '%';
-
-
-                console.log(firstVisibleItem + "firstVisibleItem")
-                console.log(indexMove + "indexMove")
-                console.log(indexActiveItemMenu + "indexActiveItemMenu" )
-
-                // for(let key in dropdownMenuItems.this){
-                //     console.log(key)
-                // }
-                // for (let i = 0; i<dropdownMenuItems.length; i++){
-                //     console.log(dropdownMenuItems[i])
-                // }
-
-
-
-               // console.log(dropdownMenuItems.findIndex(this))
                 let blockID = anchor.getAttribute('href').substr(1)
                 document.getElementById(blockID).scrollIntoView({
                     behavior: 'smooth',
@@ -209,30 +195,10 @@ main = {
             })
         }
 
-
-
     },
-
-    // scrollItem: function (){
-    //
-    //     let testButton = document.querySelector('button')
-    //     let sliderData = this.slider();
-    //
-    //
-    //     testButton.addEventListener('click', () => {
-    //         let firstVisibleItem = (Math.abs(sliderData()[0])/Math.abs(sliderData()[1])) + 1;
-    //         console.log(firstVisibleItem)
-    //
-    //     })
-    //
-    //
-    //
-    //
-    // },
     init: function () {
         this.slider();
         this.scroll();
-        //this.scrollItem();
     },
 }
 
