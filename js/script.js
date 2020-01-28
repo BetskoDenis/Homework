@@ -23,7 +23,13 @@ main = {
         let percentItem = 100 / Math.round(carouselBlockWidth/itemWidth);
         let dropdownMenu = document.getElementById('dropdown_menu_header');
         let dropdownMenuItems = dropdownMenu.getElementsByTagName('a');
+        let openChecked = document.getElementById('open');
 
+        function checked(){
+            if(openChecked.checked == false){
+                openChecked.checked = true
+            } openChecked.checked = false
+        };
 
         for (let dropdownMenuItem of dropdownMenuItems ){
             dropdownMenuItem.addEventListener('click', function () {
@@ -32,6 +38,7 @@ main = {
                 let indexActiveItemMenu = (dropdownMenuItemsArr.indexOf(this, 0))+1;
                 let indexMove = ((indexActiveItemMenu - firstVisibleItem)*Math.abs(percentItem)) * -1;
                 leftPercent = leftPercent + indexMove;
+                checked();
                 setTimeout(function () {
                     carouselWrapper.style.left = leftPercent + '%';
                 },500)
@@ -46,6 +53,13 @@ main = {
 
             })
         }
+
+
+
+        // dropdownMenu.addEventListener('click', function () {
+        //
+        // })
+        checked();
 
         window.addEventListener('resize', function () {
             itemWidth = item.clientWidth;
