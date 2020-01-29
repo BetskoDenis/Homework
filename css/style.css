@@ -185,7 +185,7 @@ header {
     transform: scale(0.75) translateY(-150%);
     position: absolute;
     flex-direction: column;
-    transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+    transition: all 0.25s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
 
 }
 
@@ -487,8 +487,9 @@ header {
     position: absolute;
     top: 104px;
     right: 0;
-    transform: translateY(-150%);
-    transition: transform .25s;
+    opacity: 0;
+    transform: scale(0.75) translateY(-150%);
+    transition: all 0.25s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
     box-shadow: -5px 4px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -551,6 +552,7 @@ header {
 }
 
 #burger_btn:checked ~ .mobile_menu {
+    opacity: 1;
     transform: translateY(0);
 }
 
@@ -792,14 +794,6 @@ aside nav {
     position: relative;
 }
 
-.carousel_left_arrow {
-    position: absolute;
-}
-
-.carousel_right_arrow {
-    position: absolute;
-}
-
 .carousel_block {
     overflow: hidden;
     position: relative;
@@ -865,6 +859,7 @@ aside nav {
 }
 
 .carousel_left_arrow, .carousel_right_arrow {
+    position: absolute;
     height: 35px;
     width: 35px;
     border: none;
@@ -873,18 +868,19 @@ aside nav {
     cursor: pointer;
     outline: none;
     z-index: 5;
+    transition: transform .25s,  box-shadow .25s;
 }
 
 
+
+
 .carousel_left_arrow {
-    position: absolute;
     top: calc(50% - 17px);
     left: -15px;
 
 }
 
 .carousel_right_arrow {
-    position: absolute;
     top: calc(50% - 17px);
     right: -15px;
 
@@ -893,21 +889,31 @@ aside nav {
 .carousel_left_arrow:after, .carousel_right_arrow:after {
     content: "";
     position: absolute;
-    top: calc(50% - 7px);
-    left: calc(50% - 7px);
+    top: 30%;
     height: 15px;
     width: 15px;
+    transition: all .15s;
     border-right: 5px solid rgba(255, 255, 255, 1);
     border-bottom: 5px solid rgba(255, 255, 255, 1);
 }
 
 .carousel_left_arrow:after {
+    left: 35%;
     transform: rotate(135deg);
 }
 
 .carousel_right_arrow:after {
+    left: 25%;
     transform: rotate(-45deg);
 }
+
+.carousel_left_arrow:hover.carousel_left_arrow:after{
+    left: 25%;
+}
+.carousel_right_arrow:hover.carousel_right_arrow:after{
+    left: 35%;
+}
+
 
 .carousel_left_arrow:active, .carousel_right_arrow:active {
     transform: scale(.9);
